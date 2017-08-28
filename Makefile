@@ -4,14 +4,14 @@ build:
 
 create:
 	docker create \
-		--name=plex \
+		--name=ovh-plex \
 		--net=host \
 		-e VERSION=latest \
-		-e PUID=<UID> -e PGID=<GID> \
-		-e TZ=<timezone> \
-		-v </path/to/library>:/config \
-		-v <path/to/tvseries>:/data/tvshows \
-		-v </path/to/movies>:/data/movies \
-		-v </path for transcoding>:/transcode \
+		-e PUID=1003 -e PGID=1003 \
+		-e TZ=Europe/London \
+		-v data/config:/config \
+		-v /media/tbox/_Seriale:/data/tvshows \
+		-v /media/tbox/_Filmy:/data/movies \
+		-v data/transcode:/transcode \
 		linuxserver/plex
 
